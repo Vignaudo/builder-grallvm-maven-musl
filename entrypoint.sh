@@ -1,3 +1,5 @@
 #!/bin/bash
 mvn $@
-find target/ -maxdepth 1 -type f -executable  |xargs upx
+if [[ -z "${SKIP_UPX}" ]]; then
+	find target/ -maxdepth 1 -type f -executable  |xargs upx
+fi
